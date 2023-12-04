@@ -1,0 +1,81 @@
+Shader "Custom/GradationSkyShader"
+{
+    Properties
+    {
+        //グラデーションカラー
+        _TopColor("TopColor",Color) = (0,0,0,0)
+        _UnderColor("UnderColor",Color) = (0,0,0,0)
+
+        //色の境界の位置
+        _ColorBorder("ColorBorder",Range(0,3)) = 0.5
+    }
+    SubShader
+    {
+        Tags 
+        { 
+            "RenderType"="Background" //最背面に描画するのでBackground
+            "Queue"="Background" //最背面に描画するのでBackground
+            "PreviewType"="SkyBox" //設定すればマテリアルのプレビューがスカイボックスになるらしい
+        }
+        LOD 100
+
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            // make fog work
+            #pragma multi_compile_fog
+
+            #include "UnityCG.cginc"
+
+            //変数の宣言　Propertiesで定義した名前と一致させる
+            float4 _UnderColor;
+            float4 _TopColor;
+            float _ColorBorder;
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float2 uv : TEXCOORD0;
+                UNITY_FOG_COORDS(1)
+                float4 vertex : SV_POSITION;
+                float3 worldPos : WORLD_POS;
+            };
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                //mulは行列の掛け算をやってくれる関数
+                o.worldPos = v.vertex.xyz;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                UNITY_TRANSFER_FOG(o,o.vertex);
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {
+                //描画したいピクセルのワールド座標を正規化
+                float3 dir = normalize(i.worldPos);
+                //ラジアンを算出する
+                //atan2(x,y) 直行座標の角度をラジアンで返す
+                //atan(x)と異なり、1周分の角度をラジアンで返せる　今回はスカイボックスの円周上のラジアンが返される
+                //asin(x)  -π/2～π/2の間で逆正弦を返す　xの範囲は-1～1
+                float2 rad = float2(atan2(dir.x, dir.z), asin(dir.y));
+                float2 uv = rad / float2(2.0 * UNITY_PI, UNITY_PI / 2);
+
+                //整えたUVのY軸方向の座標を利用して色をグラデーションさせる
+                return lerp(_UnderColor, _TopColor, uv.y + _ColorBorder);
+            }
+            ENDCG
+        }
+    }
+}
