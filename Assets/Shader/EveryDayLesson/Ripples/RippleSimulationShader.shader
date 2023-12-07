@@ -50,4 +50,6 @@ Shader "Custom/RippleSimulationShader"
             ENDCG
         }
     }
+
+    Fallback "Unlit/Texture"
 }
