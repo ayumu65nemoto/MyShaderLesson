@@ -14,12 +14,12 @@ CustomRenderTexture:
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 5
-  m_Width: 128
-  m_Height: 128
+  m_Width: 256
+  m_Height: 256
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 94
-  m_ColorFormat: 8
+  m_ColorFormat: 52
   m_MipMap: 0
   m_GenerateMips: 1
   m_SRGB: 0
@@ -37,13 +37,13 @@ CustomRenderTexture:
   m_Dimension: 2
   m_VolumeDepth: 1
   m_ShadowSamplingMode: 2
-  m_Material: {fileID: 2100000, guid: eee4d7e4a1d88584b8ef851d992c8fad, type: 2}
+  m_Material: {fileID: 2100000, guid: 36ec2b962e239414aafa349c5f5c32fe, type: 2}
   m_InitSource: 0
   m_InitMaterial: {fileID: 0}
   m_InitColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
-  m_InitTexture: {fileID: 2800000, guid: 828f0a5a8a21cab4b8de2e187590004a, type: 3}
-  m_UpdateMode: 1
-  m_InitializationMode: 0
+  m_InitTexture: {fileID: 0}
+  m_UpdateMode: 2
+  m_InitializationMode: 2
   m_UpdateZoneSpace: 0
   m_CurrentUpdateZoneSpace: 0
   m_UpdateZones: []

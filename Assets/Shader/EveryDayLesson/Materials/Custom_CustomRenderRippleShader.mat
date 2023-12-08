@@ -22,8 +22,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Attenuation: 1
+    - _Attenuation: 0.999
     - _DeltaUV: 0.1
-    - _S2: 0.5
+    - _S2: 0.2
     m_Colors: []
   m_BuildTextureStacks: []
