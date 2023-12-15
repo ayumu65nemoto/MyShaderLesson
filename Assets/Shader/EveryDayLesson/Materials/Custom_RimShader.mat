@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_DistortionWaveShader
-  m_Shader: {fileID: 4800000, guid: 316070b0faa69de4a94f8db6b7fa72cf, type: 3}
+  m_Name: Custom_RimShader
+  m_Shader: {fileID: 4800000, guid: a71b5197a9bf082469522737574ee49f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -22,15 +22,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.5
-    - _DepthFactor: 1
-    - _DistortionPower: 0
-    - _FoamPower: 0.6
-    - _Frequency: 1
-    - _SquareNum: 5
-    - _WaveSpeed: 1
+    - _RimPower: 1
     m_Colors:
-    - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _WaterColor: {r: 0, g: 0.4106257, b: 1, a: 0}
+    - _RimColor: {r: 0, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 0, g: 0.5, b: 1, a: 1}
   m_BuildTextureStacks: []
