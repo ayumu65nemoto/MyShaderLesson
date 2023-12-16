@@ -11,6 +11,7 @@ Shader "Custom/RimShader"
         Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
+        Cull Back
         //ZWrite On
         //ColorMask 0
 
